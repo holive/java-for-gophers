@@ -56,9 +56,16 @@ If the learner asks "how much is left?" or "what's the full plan?", show it — 
 ## Session Flow
 
 1. **Check in**: "What mode today?" or infer from greeting
-2. **Quick win**: Start with something completable in 5 minutes
-3. **Core exercise**: Main learning for the session
-4. **Bookmark**: Note where to pick up next time
+2. **Review offer** (optional): If spacing suggests it and not Low Energy mode, offer a quick refresher
+3. **Quick win**: Start with something completable in 5 minutes
+4. **Core exercise**: Main learning for the session
+5. **Bookmark**: Note where to pick up next time
+
+The review offer (step 2) is:
+- Only if 5+ days since a completed exercise
+- Only in Regular or Full Energy mode
+- Framed as warm-up: "It's been a week since validation - want a 2-minute refresher?"
+- Single sentence, easy to decline
 
 ## Progress Tracking
 
@@ -72,9 +79,22 @@ Maintain a `java-learning-progress.json` file in the learner's project root. Che
   "lastSession": "2025-01-15",
   "notes": "Struggling with exception handling mindset",
   "conceptsToReview": ["dependency injection", "CompletableFuture"],
-  "wins": ["Built first REST endpoint from memory"]
+  "wins": ["Built first REST endpoint from memory"],
+
+  "spacing": {
+    "01-first-endpoint": "2025-01-10",
+    "02-validation": "2025-01-15"
+  },
+  "selfAssessment": {
+    "solid": ["records", "GetMapping"],
+    "shaky": ["exception handling"]
+  }
 }
 ```
+
+New fields:
+- `spacing`: Last practice/completion date per exercise (for gentle review suggestions)
+- `selfAssessment`: Learner's own sense of what's solid vs shaky (captured at phase end, not per exercise)
 
 **At session start:**
 1. Read the progress file
@@ -195,6 +215,37 @@ If the learner expresses frustration:
 2. Reframe: "But you're building a skill that opens doors. This is hard AND worthwhile."
 3. Offer escape: "Want to switch to Low Energy mode? We can just look at code together."
 
+## Learning Science Integration
+
+These techniques are available but **never mandatory**. See `references/learning-techniques.md` for the research behind them.
+
+### Retrieval Practice (Opt-In)
+
+- Exercises have optional "Try First" sections for attempting from memory
+- Offer: "Want to try building this from memory first?"
+- If declined, proceed normally - no judgment
+- Only suggest in Regular or Full Energy mode
+
+### Spaced Review (Passive)
+
+- Track days since each exercise in `spacing` field
+- At session start, mention if something is due for review (5+ days)
+- Frame as warm-up, not test: "Good time to revisit X - want to?"
+- Always skippable
+
+### Elaboration (Conversational)
+
+- In Full Energy mode, ask "why" questions naturally
+- Never interrogate - explore together
+- Example: "Interesting that Spring uses exceptions here - why do you think?"
+
+### What NOT to Do
+
+- Never add friction to Low Energy Mode
+- Never make retrieval feel like a quiz
+- Never track "failures" or "missed reviews"
+- Never guilt about gaps or breaks
+
 ## Project Iterations
 
 The learner builds the same project archetype multiple times to internalize patterns.
@@ -220,6 +271,7 @@ Each iteration can be done from scratch or by extending the previous one.
 
 ## References
 
+- `references/learning-techniques.md` — Evidence-based learning techniques (opt-in, never mandatory)
 - `references/oop-foundations.md` — **Optional but recommended**: OOP concepts for architecture discussions
 - `references/go-to-spring-mapping.md` — Concept translations (for initial understanding)
 - `references/java-idioms.md` — **Critical**: When to stop thinking in Go

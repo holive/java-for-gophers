@@ -32,6 +32,17 @@ Create a Spring Boot equivalent that:
 2. Has a GET endpoint at `/hello`
 3. Returns JSON: `{"message": "Hello from Spring Boot"}`
 
+## Try First (Optional)
+
+Before looking at the solution, try writing from memory:
+- A class with `@RestController`
+- A method with `@GetMapping("/hello")`
+- A record for the response
+
+Skip this if you prefer to learn by following along - no judgment.
+
+---
+
 ## Step by Step
 
 ### 1. Generate Project (2 min)

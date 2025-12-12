@@ -36,6 +36,17 @@ Create a filter that:
 3. Adds the request ID to the response headers
 4. Logs completion time after the request finishes
 
+## Try First (Optional)
+
+Before looking at the solution, try writing from memory:
+- A class extending `OncePerRequestFilter`
+- Override `doFilterInternal` with request, response, filterChain params
+- Call `filterChain.doFilter(request, response)` to continue the chain
+
+Skip this if you prefer to learn by following along - no judgment.
+
+---
+
 ## Step by Step
 
 ### 1. Create the Filter (10 min)

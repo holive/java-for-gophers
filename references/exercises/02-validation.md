@@ -45,6 +45,17 @@ Create a POST `/users` endpoint that:
 4. Returns 400 with error details if validation fails
 5. Returns 201 with the created user if valid
 
+## Try First (Optional)
+
+Before looking at the solution, try writing from memory:
+- A record with `@NotBlank`, `@Email`, `@Size` annotations
+- A controller method with `@Valid @RequestBody`
+- A `@RestControllerAdvice` for handling `MethodArgumentNotValidException`
+
+Skip this if you prefer to learn by following along - no judgment.
+
+---
+
 ## Step by Step
 
 ### 1. Add Validation Dependency (2 min)
