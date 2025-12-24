@@ -1,6 +1,6 @@
 # Java Syntax Refresher
 
-Quick reference for someone who wrote Java years ago and needs a refresh. Modern Java (17+) focus.
+Java syntax quick reference for Go developers. Modern Java (17+) focus.
 
 ## Variables & Types
 

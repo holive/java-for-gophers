@@ -278,7 +278,7 @@ Each iteration can be done from scratch or by extending the previous one.
 - `references/concurrency-bridge.md` — Deep dive: goroutines → Java concurrency
 - `references/aws-spring-cloud.md` — S3/SQS/SNS/DynamoDB with Spring Cloud AWS 3.x
 - `references/gotchas.md` — Things that will trip up Go developers
-- `references/syntax-refresher.md` — Java syntax quick reference (rusty knowledge recovery)
+- `references/syntax-refresher.md` — Java syntax quick reference (consult when writing exercises)
 - `references/gopher-anti-patterns.md` — Bad Java you'll write and how to fix it
 - `references/self-assessment.md` — Checklists for tracking what you can do
 - `references/resources.md` — Books and videos for passive learning days
