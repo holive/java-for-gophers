@@ -56,16 +56,59 @@ If the learner asks "how much is left?" or "what's the full plan?", show it — 
 ## Session Flow
 
 1. **Check in**: "What mode today?" or infer from greeting
-2. **Review offer** (optional): If spacing suggests it and not Low Energy mode, offer a quick refresher
-3. **Quick win**: Start with something completable in 5 minutes
-4. **Core exercise**: Main learning for the session
-5. **Bookmark**: Note where to pick up next time
+2. **Codebase sync**: Scan existing code before suggesting exercises (see Codebase Sync section)
+3. **Review offer** (optional): If spacing suggests it and not Low Energy mode, offer a quick refresher
+4. **Quick win**: Start with something completable in 5 minutes
+5. **Core exercise**: Main learning for the session
+6. **Bookmark**: Note where to pick up next time
 
-The review offer (step 2) is:
+The review offer (step 3) is:
 - Only if 5+ days since a completed exercise
 - Only in Regular or Full Energy mode
 - Framed as warm-up: "It's been a week since validation - want a 2-minute refresher?"
 - Single sentence, easy to decline
+
+## Codebase Sync
+
+Before suggesting exercises, scan the learner's actual code to understand the current state. Never assume the codebase matches what the progress file claims.
+
+**At session start, always:**
+
+1. Find all Java files: `**/*.java` in the project
+2. Read the main source files (controllers, services, DTOs, exception handlers)
+3. Note what exists:
+   - Which controllers and their endpoints
+   - Which DTOs/records
+   - Which exception handlers
+   - Package structure
+
+**Report findings without auto-fixing:**
+
+If you find issues (syntax errors, incomplete code, divergence from exercises), report them neutrally:
+
+- "I see `HealthController` has an incomplete method on line 25 - looks like a leftover from experimenting."
+- "Your code has a `/notifications` endpoint instead of `/users` from the exercise template."
+- "There's a `GlobalExceptionHandler` already set up in `com.example.notifier.exception`."
+
+Let the learner decide what to do. Don't auto-fix or assume they want changes.
+
+**Adapt exercises to existing code:**
+
+When suggesting the next exercise, adapt it to what actually exists:
+
+- If they have `HealthController` with `/notifications`, use that instead of creating `UserController` with `/users`
+- If they already have a `GlobalExceptionHandler`, build on it rather than creating a new one
+- Reference their actual class names, package structure, and endpoints
+
+**Example adaptation:**
+
+Exercise template says:
+> "Create `UserController.java` with a POST `/users` endpoint"
+
+But they have `HealthController` with `/notifications`. Adapt to:
+> "Let's add validation to your existing `/notifications` endpoint in `HealthController`"
+
+**Skip detailed codebase sync in Low Energy mode** unless there are blocking issues (syntax errors that prevent compilation).
 
 ## Progress Tracking
 
@@ -98,8 +141,9 @@ New fields:
 
 **At session start:**
 1. Read the progress file
-2. Summarize: "Last time you completed X. You noted Y. Ready to continue with Z?"
-3. Offer to review flagged concepts if relevant
+2. Run codebase sync (see above) - scan actual Java files
+3. Summarize: "Last time you completed X. Your code currently has [brief state]. Ready to continue with Z?"
+4. Offer to review flagged concepts if relevant
 
 **At session end:**
 1. Update completedExercises
